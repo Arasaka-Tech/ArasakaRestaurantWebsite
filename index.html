@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>夜行咖啡館 Night Walker Café</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: #eee;
+        text-align: center;
+    }
+
+    h1 {
+        color: #f5c542;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px;
+    }
+
+    .item {
+        background: #222;
+        padding: 10px;
+        border-radius: 10px;
+        width: 200px;
+    }
+
+    img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    form {
+        margin-top: 20px;
+        text-align: left;
+        display: inline-block;
+    }
+
+    .section {
+        margin-bottom: 15px;
+    }
+
+    button {
+        background: #f5c542;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>🌙 夜行咖啡館 Night Walker Café</h1>
+<p>線上點餐系統</p>
+
+<!-- 餐點 -->
+<div class="menu">
+
+    <div class="item">
+        <img src="https://via.placeholder.com/200x150?text=Latte" alt="拿鐵">
+        <h3>拿鐵咖啡</h3>
+        <p>NT$120</p>
+    </div>
+
+    <div class="item">
+        <img src="https://via.placeholder.com/200x150?text=Toast" alt="厚片吐司">
+        <h3>蜂蜜厚片</h3>
+        <p>NT$80</p>
+    </div>
+
+    <div class="item">
+        <img src="https://via.placeholder.com/200x150?text=Pasta" alt="義大利麵">
+        <h3>奶油培根義大利麵</h3>
+        <p>NT$180</p>
+    </div>
+
+</div>
+<form>
+
+    <!-- 新增：选择饮品 -->
+    <div class="section">
+        <h3>🥤 選擇飲品（單選）</h3>
+        <input type="radio" name="drink" required> 拿鐵咖啡 NT$120<br>
+        <input type="radio" name="drink"> 美式咖啡 NT$100<br>
+        <input type="radio" name="drink"> 抹茶拿鐵 NT$140<br>
+        <input type="radio" name="drink"> 可可牛奶 NT$130<br>
+    </div>
+
+    <!-- 單選 -->
+    <div class="section">
+        <h3>🍬 飲料甜度（單選）</h3>
+        <input type="radio" name="sugar"> 無糖<br>
+        <input type="radio" name="sugar"> 微糖<br>
+        <input type="radio" name="sugar"> 半糖<br>
+        <input type="radio" name="sugar"> 全糖<br>
+    </div>
+
+    <!-- 單選 -->
+    <div class="section">
+        <h3>🧊 冰量（單選）</h3>
+        <input type="radio" name="ice"> 去冰<br>
+        <input type="radio" name="ice"> 少冰<br>
+        <input type="radio" name="ice"> 正常<br>
+    </div>
+
+    <!-- 複選 -->
+    <div class="section">
+        <h3>➕ 加料（可複選）</h3>
+        <input type="checkbox"> 珍珠<br>
+        <input type="checkbox"> 椰果<br>
+        <input type="checkbox"> 奶蓋<br>
+        <input type="checkbox"> 布丁<br>
+    </div>
+
+    <!-- 複選 -->
+    <div class="section">
+        <h3>🍟 配餐（可複選）</h3>
+        <input type="checkbox"> 薯條<br>
+        <input type="checkbox"> 沙拉<br>
+        <input type="checkbox"> 濃湯<br>
+    </div>
+
+    <!-- 文字輸入 -->
+    <div class="section">
+        <h3>👤 顧客姓名</h3>
+        <input type="text" placeholder="請輸入姓名" required>
+    </div>
+
+    <div class="section">
+        <h3>📞 聯絡電話</h3>
+        <input type="text" placeholder="請輸入電話">
+    </div>
+
+    <div class="section">
+        <h3>📝 備註</h3>
+        <textarea placeholder="例如：少冰、不要糖"></textarea>
+    </div>
+
+    <!-- 提交 -->
+    <div class="section" style="text-align:center;">
+        <button type="submit">提交訂單</button>
+    </div>
+
+</form>
+
+</body>
+</html>

@@ -1,285 +1,209 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
-<title>夜行咖啡館 Night Walker Café</title>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夜行咖啡館｜線上點餐</title>
+    <style>
+        /* 簡單又好看的風格，保持初學者可讀性 */
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #f5c542;
+            --text: #e2e8f0;
+            --muted: #94a3b8;
+            --border: #334155;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: radial-gradient(circle at 20% 20%, #1b2230 0%, #0f172a 45%);
+            color: var(--text);
+            padding: 24px 12px 64px;
+            text-align: center;
+        }
+        header {
+            max-width: 1080px;
+            margin: 0 auto 24px;
+        }
+        h1 { margin: 0 0 6px; color: var(--accent); font-size: 32px; }
+        p.subtitle { margin: 0; color: var(--muted); }
 
-<style>
-    :root {
-        color-scheme: dark;
-        --bg: radial-gradient(circle at 20% 20%, #1b2230, #0d1117 45%);
-        --card: #161b22;
-        --accent: #f5c542;
-        --text: #e6edf3;
-        --muted: #9ea7b3;
-        --border: #273040;
-    }
+        .menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            max-width: 1080px;
+            margin: 20px auto 28px;
+        }
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 12px;
+            text-align: left;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+        .card h3 { margin: 10px 0 4px; font-size: 18px; }
+        .card p { margin: 0; color: var(--muted); }
+        .price { display: inline-block; margin-top: 6px; padding: 4px 10px; border-radius: 999px; background: var(--accent); color: #111; font-weight: 700; }
 
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        margin: 0;
-        font-family: "Segoe UI", Arial, sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        text-align: center;
-        min-height: 100vh;
-        padding: 32px 16px 64px;
-    }
-
-    header {
-        max-width: 1080px;
-        margin: 0 auto 32px;
-    }
-
-    h1 {
-        margin: 0 0 8px;
-        font-size: 34px;
-        letter-spacing: 0.02em;
-        color: var(--accent);
-    }
-
-    p.subtitle {
-        margin: 0;
-        color: var(--muted);
-        font-size: 15px;
-    }
-
-    .menu {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 20px;
-        max-width: 1080px;
-        margin: 0 auto 28px;
-    }
-
-    .item {
-        background: var(--card);
-        padding: 14px;
-        border-radius: 14px;
-        border: 1px solid var(--border);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-        text-align: left;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .item img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-        border-radius: 10px;
-        border: 1px solid var(--border);
-    }
-
-    .item h3 {
-        margin: 12px 0 6px;
-        font-size: 18px;
-    }
-
-    .item p {
-        margin: 0;
-        color: var(--muted);
-    }
-
-    .price-tag {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background: rgba(245, 197, 66, 0.9);
-        color: #0d1117;
-        padding: 6px 10px;
-        border-radius: 999px;
-        font-weight: 700;
-        font-size: 13px;
-        border: 1px solid #d7aa25;
-    }
-
-    form {
-        max-width: 720px;
-        margin: 0 auto;
-        text-align: left;
-        background: var(--card);
-        padding: 20px 24px 28px;
-        border-radius: 14px;
-        border: 1px solid var(--border);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-    }
-
-    .section {
-        margin-bottom: 18px;
-    }
-
-    .section h3 {
-        margin: 0 0 8px;
-        font-size: 17px;
-    }
-
-    label.option {
-        display: block;
-        margin-bottom: 6px;
-        cursor: pointer;
-        color: var(--text);
-    }
-
-    .inputs {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 12px;
-    }
-
-    input[type="text"],
-    input[type="tel"],
-    input[type="email"],
-    input[type="time"],
-    textarea {
-        width: 100%;
-        padding: 10px 12px;
-        border-radius: 10px;
-        border: 1px solid var(--border);
-        background: #0f131a;
-        color: var(--text);
-        font-size: 14px;
-    }
-
-    textarea {
-        min-height: 80px;
-        resize: vertical;
-    }
-
-    .submit-wrap {
-        text-align: center;
-        margin-top: 12px;
-    }
-
-    button {
-        background: linear-gradient(120deg, #f5c542, #f08e2a);
-        border: none;
-        padding: 12px 30px;
-        font-size: 17px;
-        cursor: pointer;
-        border-radius: 999px;
-        color: #0d1117;
-        font-weight: 700;
-        letter-spacing: 0.01em;
-        box-shadow: 0 12px 24px rgba(240, 142, 42, 0.35);
-        transition: transform 0.12s ease, box-shadow 0.12s ease;
-    }
-
-    button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 14px 28px rgba(240, 142, 42, 0.45);
-    }
-</style>
-</style>
+        form {
+            max-width: 760px;
+            margin: 0 auto;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 20px 26px;
+            text-align: left;
+            box-shadow: 0 16px 36px rgba(0,0,0,0.35);
+        }
+        .section { margin-bottom: 16px; }
+        .section h3 { margin: 0 0 8px; font-size: 17px; }
+        label { display: block; margin-bottom: 6px; cursor: pointer; }
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+        }
+        input[type="text"], input[type="tel"], input[type="email"], input[type="time"], textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: #0b1220;
+            color: var(--text);
+            font-size: 14px;
+        }
+        textarea { min-height: 80px; resize: vertical; }
+        .submit-wrap { text-align: center; margin-top: 12px; }
+        button {
+            background: linear-gradient(120deg, #f5c542, #f08e2a);
+            color: #0d1117;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 999px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            box-shadow: 0 10px 24px rgba(240, 142, 42, 0.35);
+        }
+        button:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(240, 142, 42, 0.45); }
+    </style>
 </head>
-<header>
-    <h1>🌙 夜行咖啡館 Night Walker Café</h1>
-    <p class="subtitle">線上點餐系統｜溫暖燈光下的午夜風味</p>
-</header>
+<body>
+    <header>
+        <h1>🌙 夜行咖啡館 Night Walker Café</h1>
+        <p class="subtitle">線上點餐系統｜深夜也能點到好味道</p>
+    </header>
 
-<!-- 餐點 -->
-<div class="menu">
-
-    <div class="item">
-        <span class="price-tag">NT$120</span>
-        <img src="img/1.jpg" alt="拿鐵咖啡">
-        <h3>拿鐵咖啡</h3>
-        <p>夜行招牌，順口奶香</p>
-    </div>
-
-    <div class="item">
-        <span class="price-tag">NT$80</span>
-        <img src="img/2.jpg" alt="蜂蜜厚片吐司">
-        <h3>蜂蜜厚片吐司</h3>
-        <p>炙烤微酥，蜂蜜香甜</p>
-    </div>
-
-    <div class="item">
-        <span class="price-tag">NT$180</span>
-        <img src="img/3.jpg" alt="奶油培根義大利麵">
-        <h3>奶油培根義大利麵</h3>
-        <p>濃郁奶香，煙燻培根</p>
-    </div>
-
-</div>
-
-<form>
-    <div class="section">
-        <h3>🥤 選擇飲品（單選）</h3>
-        <label class="option"><input type="radio" name="drink" required> 拿鐵咖啡 NT$120</label>
-        <label class="option"><input type="radio" name="drink"> 美式咖啡 NT$100</label>
-        <label class="option"><input type="radio" name="drink"> 抹茶拿鐵 NT$140</label>
-        <label class="option"><input type="radio" name="drink"> 可可牛奶 NT$130</label>
-    </div>
-
-    <div class="section">
-        <h3>🍬 飲料甜度（單選）</h3>
-        <label class="option"><input type="radio" name="sugar"> 無糖</label>
-        <label class="option"><input type="radio" name="sugar"> 微糖</label>
-        <label class="option"><input type="radio" name="sugar"> 半糖</label>
-        <label class="option"><input type="radio" name="sugar"> 全糖</label>
-    </div>
-
-    <div class="section">
-        <h3>🧊 冰量（單選）</h3>
-        <label class="option"><input type="radio" name="ice"> 去冰</label>
-        <label class="option"><input type="radio" name="ice"> 少冰</label>
-        <label class="option"><input type="radio" name="ice"> 正常冰</label>
-    </div>
-
-    <div class="section">
-        <h3>➕ 加料（可複選）</h3>
-        <label class="option"><input type="checkbox" name="topping"> 珍珠</label>
-        <label class="option"><input type="checkbox" name="topping"> 椰果</label>
-        <label class="option"><input type="checkbox" name="topping"> 奶蓋</label>
-        <label class="option"><input type="checkbox" name="topping"> 布丁</label>
-    </div>
-
-    <div class="section">
-        <h3>🍟 配餐（可複選）</h3>
-        <label class="option"><input type="checkbox" name="side"> 薯條</label>
-        <label class="option"><input type="checkbox" name="side"> 沙拉</label>
-        <label class="option"><input type="checkbox" name="side"> 濃湯</label>
-        <label class="option"><input type="checkbox" name="side"> 炸雞塊</label>
-    </div>
-
-    <div class="section inputs">
-        <div>
-            <h3>👤 顧客姓名</h3>
-            <input type="text" placeholder="請輸入姓名" required>
+    <div class="menu">
+        <div class="card">
+            <img src="img/1.jpg" alt="拿鐵咖啡">
+            <h3>拿鐵咖啡</h3>
+            <p>順口奶香，夜行招牌</p>
+            <span class="price">NT$120</span>
         </div>
-        <div>
-            <h3>📞 聯絡電話</h3>
-            <input type="tel" placeholder="請輸入電話" pattern="[0-9\-\s]+">
+        <div class="card">
+            <img src="img/2.jpg" alt="蜂蜜厚片吐司">
+            <h3>蜂蜜厚片吐司</h3>
+            <p>微酥厚片，蜂蜜香甜</p>
+            <span class="price">NT$80</span>
         </div>
-        <div>
-            <h3>📧 電子郵件</h3>
-            <input type="email" placeholder="方便寄送收據 (選填)">
-        </div>
-        <div>
-            <h3>⏰ 取餐時間</h3>
-            <input type="time" placeholder="預計取餐時間">
-        </div>
-        <div>
-            <h3>🪑 桌號 / 取餐名稱</h3>
-            <input type="text" placeholder="內用桌號或外帶代稱">
+        <div class="card">
+            <img src="img/3.jpg" alt="奶油培根義大利麵">
+            <h3>奶油培根義大利麵</h3>
+            <p>濃郁奶香，煙燻培根</p>
+            <span class="price">NT$180</span>
         </div>
     </div>
 
-    <div class="section">
-        <h3>📝 備註</h3>
-        <textarea placeholder="例如：少冰、不要糖、分開包裝"></textarea>
-    </div>
+    <form>
+        <div class="section">
+            <h3>🥤 選擇飲品（單選）</h3>
+            <label><input type="radio" name="drink" required> 拿鐵咖啡 NT$120</label>
+            <label><input type="radio" name="drink"> 美式咖啡 NT$100</label>
+            <label><input type="radio" name="drink"> 抹茶拿鐵 NT$140</label>
+            <label><input type="radio" name="drink"> 可可牛奶 NT$130</label>
+        </div>
 
-    <div class="submit-wrap">
-        <button type="submit">提交訂單</button>
-    </div>
+        <div class="section">
+            <h3>🍬 甜度（單選）</h3>
+            <label><input type="radio" name="sweet"> 無糖</label>
+            <label><input type="radio" name="sweet"> 微糖</label>
+            <label><input type="radio" name="sweet"> 半糖</label>
+            <label><input type="radio" name="sweet"> 全糖</label>
+        </div>
 
-</form>
-    </div>
+        <div class="section">
+            <h3>🧊 冰量（單選）</h3>
+            <label><input type="radio" name="ice"> 去冰</label>
+            <label><input type="radio" name="ice"> 少冰</label>
+            <label><input type="radio" name="ice"> 正常冰</label>
+        </div>
 
-</form>
+        <div class="section">
+            <h3>➕ 加料（可複選）</h3>
+            <label><input type="checkbox" name="topping"> 珍珠</label>
+            <label><input type="checkbox" name="topping"> 椰果</label>
+            <label><input type="checkbox" name="topping"> 奶蓋</label>
+            <label><input type="checkbox" name="topping"> 布丁</label>
+        </div>
 
+        <div class="section">
+            <h3>🍟 配餐（可複選）</h3>
+            <label><input type="checkbox" name="side"> 薯條</label>
+            <label><input type="checkbox" name="side"> 沙拉</label>
+            <label><input type="checkbox" name="side"> 濃湯</label>
+            <label><input type="checkbox" name="side"> 炸雞塊</label>
+        </div>
+
+        <div class="section">
+            <h3>🍰 甜點（可複選）</h3>
+            <label><input type="checkbox" name="dessert"> 起司蛋糕</label>
+            <label><input type="checkbox" name="dessert"> 布朗尼</label>
+            <label><input type="checkbox" name="dessert"> 可頌</label>
+        </div>
+
+        <div class="section input-grid">
+            <div>
+                <h3>👤 姓名</h3>
+                <input type="text" placeholder="請輸入姓名" required>
+            </div>
+            <div>
+                <h3>📞 電話</h3>
+                <input type="tel" placeholder="09xx-xxx-xxx">
+            </div>
+            <div>
+                <h3>📧 Email</h3>
+                <input type="email" placeholder="方便寄送收據 (選填)">
+            </div>
+            <div>
+                <h3>⏰ 取餐時間</h3>
+                <input type="time">
+            </div>
+            <div>
+                <h3>🪑 桌號 / 取餐名稱</h3>
+                <input type="text" placeholder="內用桌號或外帶代稱">
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>📝 備註</h3>
+            <textarea placeholder="例如：少冰、不要糖、分開包裝"></textarea>
+        </div>
+
+        <div class="submit-wrap">
+            <button type="submit">提交訂單</button>
+        </div>
+    </form>
 </body>
 </html>

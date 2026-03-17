@@ -3,205 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>荒坂餐廳 線上點餐系統</title>
-    <style>
-        :root {
-            --bg: #0f172a;
-            --card: #1e293b;
-            --accent: #f5c542;
-            --text: #e2e8f0;
-            --muted: #94a3b8;
-            --border: #334155;
-        }
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: radial-gradient(circle at 20% 20%, #1b2230 0%, #0f172a 45%);
-            color: var(--text);
-            padding: 24px 12px 64px;
-            text-align: center;
-        }
-        header {
-            max-width: 1080px;
-            margin: 0 auto 24px;
-        }
-        h1 { margin: 0 0 6px; color: var(--accent); font-size: 32px; }
-        p.subtitle { margin: 0; color: var(--muted); }
-
-        .menu {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-            max-width: 1080px;
-            margin: 20px auto 28px;
-        }
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px;
-            text-align: left;
-            box-shadow: 0 12px 32px rgba(0,0,0,0.35);
-        }
-        .card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-        }
-        .card h3 { margin: 10px 0 4px; font-size: 18px; }
-        .card p { margin: 0; color: var(--muted); }
-        .price { display: inline-block; margin-top: 6px; padding: 4px 10px; border-radius: 999px; background: var(--accent); color: #111; font-weight: 700; }
-
-        form {
-            max-width: 760px;
-            margin: 0 auto;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 20px 20px 26px;
-            text-align: left;
-            box-shadow: 0 16px 36px rgba(0,0,0,0.35);
-        }
-        .section { margin-bottom: 16px; }
-        .section h3 { margin: 0 0 8px; font-size: 17px; }
-        label { display: block; margin-bottom: 6px; cursor: pointer; }
-        .input-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 10px;
-        }
-        input[type="text"], input[type="tel"], input[type="email"], input[type="time"], textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            background: #0b1220;
-            color: var(--text);
-            font-size: 14px;
-        }
-        textarea { min-height: 80px; resize: vertical; }
-        .submit-wrap { text-align: center; margin-top: 12px; }
-        button {
-            background: linear-gradient(120deg, #f5c542, #f08e2a);
-            color: #0d1117;
-            border: none;
-            padding: 12px 32px;
-            border-radius: 999px;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            cursor: pointer;
-            box-shadow: 0 10px 24px rgba(240, 142, 42, 0.35);
-        }
-        button:hover { transform: translateY(-1px); box-shadow: 0 12px 28px rgba(240, 142, 42, 0.45); }
-    </style>
+    <title>Arasaka Restaurant 線上點餐</title>
 </head>
-<body>
-    <header>
-        <h1>Arasaka Restaurant 荒坂餐廳</h1>
-        <p class="subtitle">線上點餐系統｜美味觸手可及</p>
-    </header>
+<body style="margin:0;font-family:Arial, sans-serif;background:#0f172a;color:#e2e8f0;padding:20px;text-align:center;">
 
-    <div class="menu">
-        <div class="card">
-            <img src="img/1.jpg" alt="拿鐵咖啡">
-            <h3>拿鐵咖啡</h3>
-            <p>順口奶香，荒坂招牌</p>
-            <span class="price">NT$120</span>
+    <div style="max-width:900px;margin:0 auto 20px;">
+        <h1 style="margin:0 0 6px;color:#f5c542;">Arasaka Restaurant 線上點餐</h1>
+        <p style="margin:0;color:#94a3b8;">簡單版作業｜四款飲品直接下單</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:12px;max-width:900px;margin:0 auto 24px;">
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:10px;text-align:left;">
+            <img src="img/1.jpg" alt="拿鐵咖啡" style="width:100%;height:150px;object-fit:cover;border-radius:10px;">
+            <h3 style="margin:10px 0 4px;">拿鐵咖啡</h3>
+            <p style="margin:0;color:#94a3b8;">順口奶香，柔和烘焙</p>
+            <span style="display:inline-block;margin-top:6px;padding:4px 10px;border-radius:12px;background:#f5c542;color:#111;font-weight:bold;">NT$120</span>
         </div>
-        <div class="card">
-            <img src="img/2.jpg" alt="蜂蜜厚片吐司">
-            <h3>蜂蜜厚片吐司</h3>
-            <p>微酥厚片，蜂蜜香甜</p>
-            <span class="price">NT$80</span>
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:10px;text-align:left;">
+            <img src="img/2.jpg" alt="美式咖啡" style="width:100%;height:150px;object-fit:cover;border-radius:10px;">
+            <h3 style="margin:10px 0 4px;">美式咖啡</h3>
+            <p style="margin:0;color:#94a3b8;">黑咖啡香氣，清爽無負擔</p>
+            <span style="display:inline-block;margin-top:6px;padding:4px 10px;border-radius:12px;background:#f5c542;color:#111;font-weight:bold;">NT$100</span>
         </div>
-        <div class="card">
-            <img src="img/3.jpg" alt="奶油培根義大利麵">
-            <h3>奶油培根義大利麵</h3>
-            <p>濃郁奶香，煙燻培根</p>
-            <span class="price">NT$180</span>
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:10px;text-align:left;">
+            <img src="img/3.jpg" alt="抹茶拿鐵" style="width:100%;height:150px;object-fit:cover;border-radius:10px;">
+            <h3 style="margin:10px 0 4px;">抹茶拿鐵</h3>
+            <p style="margin:0;color:#94a3b8;">濃抹茶粉，融合鮮奶</p>
+            <span style="display:inline-block;margin-top:6px;padding:4px 10px;border-radius:12px;background:#f5c542;color:#111;font-weight:bold;">NT$140</span>
+        </div>
+        <div style="background:#1e293b;border:1px solid #334155;border-radius:12px;padding:10px;text-align:left;">
+            <img src="img/3.jpg" alt="可可牛奶" style="width:100%;height:150px;object-fit:cover;border-radius:10px;">
+            <h3 style="margin:10px 0 4px;">可可牛奶</h3>
+            <p style="margin:0;color:#94a3b8;">可可濃郁，綿密奶泡</p>
+            <span style="display:inline-block;margin-top:6px;padding:4px 10px;border-radius:12px;background:#f5c542;color:#111;font-weight:bold;">NT$130</span>
         </div>
     </div>
 
-    <form>
-        <div class="section">
-            <h3>🥤 選擇飲品（單選）</h3>
-            <label><input type="radio" name="drink" required> 拿鐵咖啡 NT$120</label>
-            <label><input type="radio" name="drink"> 美式咖啡 NT$100</label>
-            <label><input type="radio" name="drink"> 抹茶拿鐵 NT$140</label>
-            <label><input type="radio" name="drink"> 可可牛奶 NT$130</label>
+    <form style="max-width:720px;margin:0 auto;background:#1e293b;border:1px solid #334155;border-radius:14px;padding:18px;text-align:left;">
+        <div style="margin-bottom:14px;">
+            <h3 style="margin:0 0 6px;">🥤 選擇飲品（單選）</h3>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="drink" required> 拿鐵咖啡 NT$120</label>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="drink"> 美式咖啡 NT$100</label>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="drink"> 抹茶拿鐵 NT$140</label>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="drink"> 可可牛奶 NT$130</label>
         </div>
 
-        <div class="section">
-            <h3>🍬 甜度（單選）</h3>
-            <label><input type="radio" name="sweet"> 無糖</label>
-            <label><input type="radio" name="sweet"> 微糖</label>
-            <label><input type="radio" name="sweet"> 半糖</label>
-            <label><input type="radio" name="sweet"> 全糖</label>
+        <div style="margin-bottom:14px;">
+            <h3 style="margin:0 0 6px;">🍬 甜度（單選）</h3>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="sweet"> 無糖</label>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="sweet"> 微糖</label>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="sweet"> 半糖</label>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="sweet"> 全糖</label>
         </div>
 
-        <div class="section">
-            <h3>🧊 冰量（單選）</h3>
-            <label><input type="radio" name="ice"> 去冰</label>
-            <label><input type="radio" name="ice"> 少冰</label>
-            <label><input type="radio" name="ice"> 正常冰</label>
+        <div style="margin-bottom:14px;">
+            <h3 style="margin:0 0 6px;">🧊 冰量（單選）</h3>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="ice"> 去冰</label>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="ice"> 少冰</label>
+            <label style="display:block;margin-bottom:4px;"><input type="radio" name="ice"> 正常冰</label>
         </div>
 
-        <div class="section">
-            <h3>➕ 加料（可複選）</h3>
-            <label><input type="checkbox" name="topping"> 珍珠</label>
-            <label><input type="checkbox" name="topping"> 椰果</label>
-            <label><input type="checkbox" name="topping"> 奶蓋</label>
-            <label><input type="checkbox" name="topping"> 布丁</label>
+        <div style="margin-bottom:14px;">
+            <h3 style="margin:0 0 6px;">➕ 加料（可複選）</h3>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="topping"> 珍珠</label>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="topping"> 椰果</label>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="topping"> 奶蓋</label>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="topping"> 布丁</label>
         </div>
 
-        <div class="section">
-            <h3>🍟 配餐（可複選）</h3>
-            <label><input type="checkbox" name="side"> 薯條</label>
-            <label><input type="checkbox" name="side"> 沙拉</label>
-            <label><input type="checkbox" name="side"> 濃湯</label>
-            <label><input type="checkbox" name="side"> 炸雞塊</label>
+        <div style="margin-bottom:14px;">
+            <h3 style="margin:0 0 6px;">🍟 配餐（可複選）</h3>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="side"> 薯條</label>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="side"> 沙拉</label>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="side"> 濃湯</label>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="side"> 炸雞塊</label>
         </div>
 
-        <div class="section">
-            <h3>🍰 甜點（可複選）</h3>
-            <label><input type="checkbox" name="dessert"> 起司蛋糕</label>
-            <label><input type="checkbox" name="dessert"> 布朗尼</label>
-            <label><input type="checkbox" name="dessert"> 可頌</label>
+        <div style="margin-bottom:14px;">
+            <h3 style="margin:0 0 6px;">🍰 甜點（可複選）</h3>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="dessert"> 起司蛋糕</label>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="dessert"> 布朗尼</label>
+            <label style="display:block;margin-bottom:4px;"><input type="checkbox" name="dessert"> 可頌</label>
         </div>
 
-        <div class="section input-grid">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:10px;margin-bottom:14px;">
             <div>
-                <h3>👤 姓名</h3>
-                <input type="text" placeholder="請輸入姓名" required>
+                <h3 style="margin:0 0 4px;">👤 姓名</h3>
+                <input type="text" placeholder="請輸入姓名" required style="width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0b1220;color:#e2e8f0;">
             </div>
             <div>
-                <h3>📞 電話</h3>
-                <input type="tel" placeholder="09xx-xxx-xxx">
+                <h3 style="margin:0 0 4px;">📞 電話</h3>
+                <input type="tel" placeholder="09xx-xxx-xxx" style="width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0b1220;color:#e2e8f0;">
             </div>
             <div>
-                <h3>📧 Email</h3>
-                <input type="email" placeholder="方便寄送收據 (選填)">
+                <h3 style="margin:0 0 4px;">📧 Email</h3>
+                <input type="email" placeholder="方便寄送收據 (選填)" style="width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0b1220;color:#e2e8f0;">
             </div>
             <div>
-                <h3>⏰ 取餐時間</h3>
-                <input type="time">
+                <h3 style="margin:0 0 4px;">⏰ 取餐時間</h3>
+                <input type="time" style="width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0b1220;color:#e2e8f0;">
             </div>
             <div>
-                <h3>🪑 桌號 / 取餐名稱</h3>
-                <input type="text" placeholder="內用桌號或外帶代稱">
+                <h3 style="margin:0 0 4px;">🪑 桌號 / 取餐名稱</h3>
+                <input type="text" placeholder="內用桌號或外帶代稱" style="width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0b1220;color:#e2e8f0;">
             </div>
         </div>
 
-        <div class="section">
-            <h3>📝 備註</h3>
-            <textarea placeholder="例如：少冰、不要糖、分開包裝"></textarea>
+        <div style="margin-bottom:14px;">
+            <h3 style="margin:0 0 4px;">📝 備註</h3>
+            <textarea placeholder="例如：少冰、不要糖、分開包裝" style="width:100%;min-height:80px;padding:10px;border-radius:8px;border:1px solid #334155;background:#0b1220;color:#e2e8f0;"></textarea>
         </div>
 
-        <div class="submit-wrap">
-            <button type="submit">提交訂單</button>
+        <div style="text-align:center;">
+            <button type="submit" style="background:linear-gradient(120deg, #f5c542, #f08e2a);color:#0d1117;border:none;padding:12px 28px;border-radius:18px;font-weight:bold;letter-spacing:0.02em;cursor:pointer;box-shadow:0 10px 24px rgba(240,142,42,0.35);">提交訂單</button>
         </div>
     </form>
 </body>
